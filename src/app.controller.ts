@@ -10,10 +10,9 @@ export class AppController {
   @Get()
   @Render('index')
   async getIndex() {
-    const count  = await this.appService.getReservationsCount()
-    console.log(count)
+    const count = await this.appService.getReservationsCount()
     return {
-      count:count,
+      count: count,
 
       errMess: null,
       errNameMess: null,
@@ -34,6 +33,7 @@ export class AppController {
   @Post()
   @Render("index")
   async postIndex(@Body() body: Reservations_DTO) {
+    const count = await this.appService.getReservationsCount()
     let isErr = false
     let isNameErr = false
     let isEmailErr = false
@@ -74,6 +74,8 @@ export class AppController {
     };
 
     return {
+      count: count,
+
       errMess: isErr ? errMess : null,
       errNameMess: isNameErr ? errNameMess : null,
       errEmailMess: isEmailErr ? errEmailMess : null,

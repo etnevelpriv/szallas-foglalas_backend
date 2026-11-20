@@ -25,7 +25,8 @@ export class AppService {
     const [response] = await this.myPool.execute(
       "SELECT COUNT(*) as count FROM reservations"
     );
-    return(response[0].count)
+    const res = response as any;
+    return(res[0].count)
   }
   getHello(): string {
     return 'Hello World!';
