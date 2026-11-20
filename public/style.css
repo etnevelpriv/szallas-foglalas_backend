@@ -3,3 +3,13 @@ body {
     color:rgb(58, 46, 135);
 }
 
+.err-mess {
+    color: red;
+}
+.err-box {
+    background-color: rgba(255, 50, 50, 0.1);
+    width: fit-content;
+    padding: 3px;
+    border: 2px solid red;
+    margin: 10px 0;
+}
