@@ -20,6 +20,12 @@ export class AppService {
       [reservation.name,reservation.email,reservation.date,reservation.guests]
     );
   }
+  async getReservationsCount() {
+    const [response] = await this.myPool.execute(
+      "SELECT COUNT(*) FROM reservations"
+    );
+    console.log(response)
+  }
   getHello(): string {
     return 'Hello World!';
   }

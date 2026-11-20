@@ -8,7 +8,8 @@ export class AppController {
 
   @Get()
   @Render('index')
-  getIndex() {
+  async getIndex() {
+    await this.appService.getReservationsCount()
     return {
       errMess: null,
       errNameMess: null,
