@@ -28,17 +28,54 @@
             <div class="input-group">
                 <label for="emailInput">Email cim</label>
                 <input type="email" name="email" id="emailInput" value="<%=locals.emailValue%>">
+                <% if (locals.errEmailMess) { %>
+                    <div class="err-box">
+                        <p class="err-mess">
+                            <%=locals.errEmailMess%>
+                        </p>
+                    </div>
+                    <%}%>
+
             </div>
             <div class="input-group">
                 <label for="dateInput">Idopont</label>
                 <input type="datetime-local" name="date" id="dateInput" value="<%=locals.dateValue%>">
+                <% if (locals.errDateMess) { %>
+                    <div class="err-box">
+                        <p class="err-mess">
+                            <%=locals.errDateMess%>
+                        </p>
+                    </div>
+                    <%}%>
+
             </div>
             <div class="input-group">
                 <label for="guestsInput">Vendegek szama</label>
                 <input type="number" name="guests" id="guestsInput" value="<%=locals.guestsValue%>">
+                <% if (locals.errGuestsMess) { %>
+                    <div class="err-box">
+                        <p class="err-mess">
+                            <%=locals.errGuestsMess%>
+                        </p>
+                    </div>
+                    <%}%>
             </div>
             <input type="submit" value="Foglalas">
+            <% if (locals.errMess) { %>
+                <div class="err-box">
+                    <p class="err-mess">
+                        <%=locals.errMess%>
+                    </p>
+                </div>
+                <%}%>
         </form>
+        <% if (locals.success) { %>
+            <div class="success-box">
+                <p class="success-mess">
+                    Sikeres feltoltes
+                </p>
+            </div>
+            <%}%>
     </div>
 
 </body>

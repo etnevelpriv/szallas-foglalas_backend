@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Render } from '@nestjs/common';
+import { Body, Controller, flatten, Get, Post, Render } from '@nestjs/common';
 import { AppService } from './app.service.js';
 import { Reservations_DTO } from './Models/DTOs/Reservation.DTO.js';
 
@@ -9,11 +9,26 @@ export class AppController {
   @Get()
   @Render('index')
   getIndex() {
+    return {
+      errMess: null,
+      errNameMess: null,
+      errEmailMess: null,
+      errGuestsMess: null,
+      errDateMess: null,
+
+      nameValue: null,
+      dateValue: null,
+      emailValue: null,
+      guestsValue: null,
+
+      success: false
+    }
+
   }
 
   @Post()
   @Render("index")
-  postIndex(@Body() body: Reservations_DTO) {
+  async postIndex(@Body() body: Reservations_DTO) {
     let isErr = false
     let isNameErr = false
     let isEmailErr = false
@@ -37,24 +52,35 @@ export class AppController {
       isErr = true;
       isGuestsErr = true;
     };
-    
+
     const emailRegex = new RegExp(/^[a-z\d]{1,}@[a-z]{1,}\.[a-z]{1,}$/);
-    if (emailRegex.test(body.email) == false ) {
+    if (emailRegex.test(body.email) == false) {
       isErr = true;
       isEmailErr = true;
     }
-    console.log(body.name)
+
+    if (!isErr) {
+      const response = await this.appService.postReservationToDb({
+        name: body.name,
+        email: body.email,
+        date: new Date(body.date),
+        guests: Number(body.guests)
+      });
+    };
+
     return {
-      errMess:isErr?errMess:null,
-      errNameMess:isNameErr?errNameMess:null,
-      errEmailMess:isEmailErr?errEmailMess:null,
-      errGuestsMess:isGuestsErr?errGuestsMess:null,
-      errDateMess:isDateErr?errDateMess:null,
-      
-      nameValue:isErr?body.name:null,
-      dateValue:isErr?body.date:null,
-      emailValue:isErr?body.email:null,
-      guestsValue:isErr?body.guests:null
+      errMess: isErr ? errMess : null,
+      errNameMess: isNameErr ? errNameMess : null,
+      errEmailMess: isEmailErr ? errEmailMess : null,
+      errGuestsMess: isGuestsErr ? errGuestsMess : null,
+      errDateMess: isDateErr ? errDateMess : null,
+
+      nameValue: isErr ? body.name : null,
+      dateValue: isErr ? body.date : null,
+      emailValue: isErr ? body.email : null,
+      guestsValue: isErr ? body.guests : null,
+
+      success: (!isErr)
     }
   }
 }
