@@ -43,6 +43,6 @@ export class AppController {
       isErr = true;
       isEmailErr = true;
     }
-    console.log(isEmailErr)
+    console.log(body)
   }
 }
