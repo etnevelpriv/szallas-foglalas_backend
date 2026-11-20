@@ -16,19 +16,39 @@
         <form method="post">
             <div class="input-group">
                 <label for="nameInput">Nev</label>
-                <input type="text" name="name" id="nameInput">
+                <input
+                type="text"
+                name="name"
+                id="nameInput"
+                value="<%=locals.nameValue%>"
+                >
             </div>
             <div class="input-group">
                 <label for="emailInput">Email cim</label>
-                <input type="text" name="email" id="emailInput">
+                <input
+                type="email"
+                name="email"
+                id="emailInput"
+                value="<%=locals.emailValue%>"
+                >
             </div>
             <div class="input-group">
                 <label for="dateInput">Idopont</label>
-                <input type="datetime-local" name="date" id="dateInput">
+                <input
+                type="datetime-local"
+                name="date"
+                id="dateInput"
+                value="<%=locals.dateValue%>"
+                >
             </div>
             <div class="input-group">
                 <label for="guestsInput">Vendegek szama</label>
-                <input type="text" name="guests" id="guestsInput">
+                <input
+                type="number"
+                name="guests"
+                id="guestsInput"
+                value="<%=locals.guestsValue%>"
+                >
             </div>
             <input type="submit" value="Foglalas">
         </form>

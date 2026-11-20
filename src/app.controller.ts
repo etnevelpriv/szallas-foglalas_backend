@@ -43,6 +43,18 @@ export class AppController {
       isErr = true;
       isEmailErr = true;
     }
-    console.log(body)
+    console.log(body.name)
+    return {
+      errMess:isErr?errMess:null,
+      errNameMess:isNameErr?errNameMess:null,
+      errEmailMess:isEmailErr?errEmailMess:null,
+      errGuestsMess:isGuestsErr?errGuestsMess:null,
+      errDateMess:isDateErr?errDateMess:null,
+      
+      nameValue:isErr?body.name:null,
+      dateValue:isErr?body.date:null,
+      emailValue:isErr?body.email:null,
+      guestsValue:isErr?body.guests:null
+    }
   }
 }
