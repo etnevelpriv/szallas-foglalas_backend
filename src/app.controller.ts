@@ -34,8 +34,15 @@ export class AppController {
       isDateErr = true;
     }
     if (typeof body.guests != "string" || body.guests.trim() === "" || Number(body.guests) < 1 || Number(body.guests) > 10 || Number(body.guests) == null || Number.isNaN(Number(body.guests))) {
-
+      isErr = true;
+      isGuestsErr = true;
+    };
+    
+    const emailRegex = new RegExp(/^[a-z\d]{1,}@[a-z]{1,}\.[a-z]{1,}$/);
+    if (emailRegex.test(body.email) == false ) {
+      isErr = true;
+      isEmailErr = true;
     }
-    console.log(body)
+    console.log(isEmailErr)
   }
 }
