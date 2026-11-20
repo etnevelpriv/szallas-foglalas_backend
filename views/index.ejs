@@ -19,9 +19,9 @@
         </p>
         <h1>Szállásfoglalás</h1>
         <form method="post">
-            <div class="input-group">
+            <div class="form-group">
                 <label for="nameInput">Nev</label>
-                <input type="text" name="name" id="nameInput" value="<%=locals.nameValue%>">
+                <input class="form-control" type="text" name="name" id="nameInput" value="<%=locals.nameValue%>">
                 <% if (locals.errNameMess) { %>
                     <div class="err-box">
                         <p class="err-mess">
@@ -30,9 +30,9 @@
                     </div>
                     <%}%>
             </div>
-            <div class="input-group">
+            <div class="form-group">
                 <label for="emailInput">Email cim</label>
-                <input type="email" name="email" id="emailInput" value="<%=locals.emailValue%>">
+                <input class="form-control" type="email" name="email" id="emailInput" value="<%=locals.emailValue%>">
                 <% if (locals.errEmailMess) { %>
                     <div class="err-box">
                         <p class="err-mess">
@@ -42,9 +42,9 @@
                     <%}%>
 
             </div>
-            <div class="input-group">
+            <div class="form-group">
                 <label for="dateInput">Idopont</label>
-                <input type="datetime-local" name="date" id="dateInput" value="<%=locals.dateValue%>">
+                <input class="form-control" type="datetime-local" name="date" id="dateInput" value="<%=locals.dateValue%>">
                 <% if (locals.errDateMess) { %>
                     <div class="err-box">
                         <p class="err-mess">
@@ -54,9 +54,9 @@
                     <%}%>
 
             </div>
-            <div class="input-group">
+            <div class="form-group">
                 <label for="guestsInput">Vendegek szama</label>
-                <input type="number" name="guests" id="guestsInput" value="<%=locals.guestsValue%>">
+                <input class="form-control" type="number" name="guests" id="guestsInput" value="<%=locals.guestsValue%>">
                 <% if (locals.errGuestsMess) { %>
                     <div class="err-box">
                         <p class="err-mess">
@@ -65,7 +65,7 @@
                     </div>
                     <%}%>
             </div>
-            <input type="submit" value="Foglalas">
+            <input class="btn btn-default" type="submit" value="Foglalas">
             <% if (locals.errMess) { %>
                 <div class="err-box">
                     <p class="err-mess">
