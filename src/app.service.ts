@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { createPool, Pool } from 'mysql2/promise';
 import { Reservation_interface } from './Models/Interfaces/Reservation.Interface.js';
+import { Count_interface } from './Models/Interfaces/Count.Interface.js';
 
 @Injectable()
 export class AppService {
@@ -22,9 +23,9 @@ export class AppService {
   }
   async getReservationsCount() {
     const [response] = await this.myPool.execute(
-      "SELECT COUNT(*) FROM reservations"
+      "SELECT COUNT(*) as count FROM reservations"
     );
-    console.log(response)
+    return(response[0].count)
   }
   getHello(): string {
     return 'Hello World!';

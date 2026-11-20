@@ -1,6 +1,7 @@
 import { Body, Controller, flatten, Get, Post, Render } from '@nestjs/common';
 import { AppService } from './app.service.js';
 import { Reservations_DTO } from './Models/DTOs/Reservation.DTO.js';
+import { Count_interface } from './Models/Interfaces/Count.Interface.js';
 
 @Controller()
 export class AppController {
@@ -9,8 +10,11 @@ export class AppController {
   @Get()
   @Render('index')
   async getIndex() {
-    await this.appService.getReservationsCount()
+    const count  = await this.appService.getReservationsCount()
+    console.log(count)
     return {
+      count:count,
+
       errMess: null,
       errNameMess: null,
       errEmailMess: null,
